@@ -1,0 +1,747 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+/* 기본 설정 */
+html,
+body,
+div,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+abbr,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+textarea,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  font-family: 'Open Sans', sans-serif;
+  vertical-align: baseline;
+}
+
+body {
+  background-color: #faf5f0;
+  line-height: 1;
+  color: #5c4033;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+/* 네비게이션 바 */
+.navbar {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  width: 220px;
+  height: 100vh;
+  padding: 10px;
+  border-right: 1px solid #d7d7d7;
+  background-color: #e8e1db;
+}
+
+/* 네비게이션 로고 */
+.navbar-logo {
+  display: block;
+  margin-bottom: 20px;
+  padding: 30px 10px;
+}
+
+.navbar-logo img {
+  height: 30px;
+}
+
+/* 네비게이션 링크 */
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #3e2723;
+  transition: background-color transform 0.1s ease-out;
+}
+
+.nav-link img {
+  width: 30px;
+  transition: transform 0.1s ease-out;
+}
+
+.nav-link:hover {
+  cursor: pointer;
+  background-color: #d7d7d7;
+  transform: scale(1.1);
+  color: #000;
+}
+
+.nav-link img:hover {
+  transform: scale(1.1);
+}
+
+/* 모달 */
+.modal {
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 0;
+  border: none;
+}
+
+.modal::backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* 모달 닫기 버튼 */
+.modal-close-button {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  z-index: 1000;
+  transition: transform 0.2s ease-in-out;
+}
+
+.modal-close-button:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.modal-close-button img {
+  width: 40px;
+}
+
+/* Post 모달 */
+.add-post-modal > form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+/* Post 모달 헤더 */
+.add-post-modal-header {
+  width: 100%;
+  text-align: center;
+  font-weight: 500;
+  padding: 10px 0;
+  border-bottom: 1px solid #7e7e7e;
+  position: relative;
+}
+
+.add-post-modal-header > button {
+  position: absolute;
+  right: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #c2b280;
+  border: none;
+  background-color: transparent;
+}
+
+.add-post-modal-header > button:hover {
+  cursor: pointer;
+  color: #5c4033;
+}
+
+/* Post 모달 파일 */
+.add-post-modal-file {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 550px;
+  height: 570px;
+}
+
+.add-post-modal-file > img {
+  width: 70px;
+  margin-bottom: 10px;
+}
+
+.add-post-modal-file > span {
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+.add-post-modal-file > label {
+  font-size: 14px;
+  color: #fff;
+  padding: 8px 15px;
+  background-color: #c2b280;
+  border-radius: 5px;
+  transition: background-color transform 0.1s ease-out;
+}
+
+.add-post-modal-file > label:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  background-color: #af9d65;
+}
+
+.add-post-modal-file > input {
+  display: none;
+}
+
+/* Post 모달 컨텐츠 */
+.add-post-modal-content {
+  display: flex;
+}
+
+.add-post-modal-image {
+  height: 500px;
+}
+
+.add-post-modal-textarea {
+  border-radius: none;
+  outline: none;
+  padding: 20px;
+  width: 300px;
+}
+
+/* Post 모달 공통 */
+.add-post-modal-view .add-post-modal-content {
+  display: none;
+}
+
+.add-post-modal-view .add-post-modal-header > button {
+  display: none;
+}
+
+.add-post-modal-update .add-post-modal-file {
+  display: none;
+}
+
+/* 컨테이너 */
+.container {
+  padding-left: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container-inner {
+  width: 1000px;
+}
+
+/* 메인 */
+main {
+  padding: 30px 0;
+}
+
+/* 프로필 */
+.profile-section {
+  display: flex;
+  padding: 40px 0;
+}
+
+.profile-image {
+  display: flex;
+  align-items: center;
+  margin: 0 70px;
+}
+
+.profile-image img {
+  width: 150px;
+  border-radius: 50%;
+  aspect-ratio: 1/1;
+  background-color: #fff;
+}
+
+.profile-options {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* 프로필 이름 */
+#profile-id {
+  font-size: 20px;
+  line-height: 20px;
+  margin-right: 20px;
+}
+
+/* 프로필 버튼 */
+.profile-button {
+  margin-right: 7px;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 7px;
+  background-color: #c2b280;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.profile-button:hover {
+  cursor: pointer;
+  background-color: #af9d65;
+}
+
+/* 프로필 설정 */
+.profile-setting-button {
+  border: none;
+  border-radius: 7px;
+  background-color: transparent;
+}
+
+.profile-setting-button img {
+  height: 30px;
+}
+
+.profile-setting-button:hover {
+  cursor: pointer;
+}
+
+/* 프로필 편집 모달 */
+.profile-edit-modal > form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+/* 프로필 편집 모달 헤더 */
+.profile-edit-modal-header {
+  width: 100%;
+  text-align: center;
+  font-weight: 500;
+  padding: 10px 0;
+  border-bottom: 1px solid #7e7e7e;
+  position: relative;
+}
+
+.profile-edit-modal-header > button {
+  position: absolute;
+  right: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #c2b280;
+  border: none;
+  background-color: transparent;
+}
+
+.profile-edit-modal-header > button:hover {
+  cursor: pointer;
+  color: #5c4033;
+}
+
+.profile-edit-modal-content {
+  width: 300px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-image-label {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.profile-image-label:hover {
+  cursor: pointer;
+}
+
+.profile-image-label > img {
+  width: 100px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+}
+
+.profile-edit-image-hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+}
+
+.profile-edit-image-hover > img {
+  width: 45px;
+}
+
+.profile-image-label:hover .profile-edit-image-hover {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-edit-modal-content > input {
+  display: none;
+}
+
+.profile-edit-modal-input {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.profile-edit-modal-input > label {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.profile-edit-modal-input > input {
+  width: 220px;
+  border: 1px solid #7e7e7e;
+  border-radius: 3px;
+  padding: 5px 7px;
+}
+
+.profile-edit-modal-input > textarea {
+  all: unset;
+  border: 1px solid #7e7e7e;
+  border-radius: 3px;
+  word-break: break-all;
+  font-size: 13px;
+  padding: 5px 7px;
+}
+
+/* 게시물, 팔로워, 팔로잉 수 */
+.profile-quantity-lists {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 20px;
+}
+
+.profile-quantity-list > strong {
+  font-weight: 500;
+}
+
+/* 프로필 컨텐츠 */
+.profile-contents {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+}
+
+.profile-content-name {
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.profile-content-description {
+  margin-bottom: 5px;
+}
+
+.profile-content-website {
+  display: flex;
+  align-items: center;
+}
+
+.profile-content-website > img {
+  height: 15px;
+  margin-right: 2px;
+}
+
+.profile-content-website > a {
+  font-weight: 500;
+  text-decoration: none;
+  color: #5c4033;
+}
+
+.profile-content-website a:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.posts-nav {
+  width: 100%;
+  border-top: 1px solid #7e7e7e;
+}
+
+.posts-nav-lists {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+}
+
+.posts-nav-list > button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 20px 0;
+  border: none;
+  background-color: transparent;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.posts-nav-list-selected > button {
+  border-top: 1px solid;
+  color: #000;
+}
+
+.posts-nav-list > button:hover {
+  cursor: pointer;
+}
+
+.posts-nav-list > button > img {
+  height: 12px;
+}
+
+.posts-gallary.posts-gallary-empty {
+  grid-template-columns: 1fr;
+}
+
+.posts-gallary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+}
+
+.posts-gallary-item-no-posts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 70px 0;
+}
+
+.posts-gallary-item-no-posts-image {
+  border: 3px solid #000;
+  background-color: #faf5f0;
+  border-radius: 50%;
+  padding: 15px;
+  margin-bottom: 15px;
+}
+
+.posts-gallary-item-no-posts-image img {
+  width: 30px;
+}
+
+.posts-gallary-item-no-posts h3 {
+  font-size: 28px;
+}
+
+.post {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.post > img {
+  width: 100%;
+  aspect-ratio: 1/1;
+}
+
+.post:hover .post-likes-comments {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.post-likes-comments {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.post-likes-comments-icon {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+  font-weight: 600;
+}
+
+.post-likes-comments-icon > img {
+  width: 25px;
+}
+
+.post-modal > form {
+  display: flex;
+  position: relative;
+}
+
+.post-modal-article {
+  width: 300px;
+  padding: 20px;
+}
+
+.post-likes-comments-update {
+  position: relative;
+}
+
+.post-likes-comments-update > textarea {
+  all: unset;
+  width: 300px;
+  height: 100%;
+  padding: 20px;
+}
+
+.post-likes-comments-update-buttons {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
+.post-likes-comments-update-buttons > button {
+  margin-right: 7px;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 7px;
+  background-color: #c2b280;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.post-likes-comments-update-buttons > button:hover {
+  cursor: pointer;
+  background-color: #af9d65;
+}
+
+.post-option-buttons {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.post-option-button {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+}
+
+.post-option-button:hover {
+  cursor: pointer;
+}
+
+.post-option-button > img {
+  width: 20px;
+}
+
+.post-modal-view .post-likes-comments-update {
+  display: none;
+}
+
+.post-modal-update .post-modal-article {
+  display: none;
+}
+
+.post-modal-update .post-option-button {
+  display: none;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 70px;
+}
+
+.footer-lists {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.footer-list {
+  font-size: 12px;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.footer-last {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-last select {
+  border: none;
+  background-color: transparent;
+}
+
+.footer-last .copyright {
+  font-size: 12px;
+  text-decoration: none;
+  color: #7e7e7e;
+}
